@@ -1,0 +1,362 @@
+:root {
+  --primary: #3b82f6;
+  --primary-hover: #2563eb;
+  --completed: #10b981;
+  --danger: #ef4444;
+  --danger-hover: #dc2626;
+  --background: #f9fafb;
+  --text: #111827;
+  --card: #ffffff;
+  --input-bg: #ffffff;
+}
+
+.dark-theme {
+  --primary: #60a5fa;
+  --primary-hover: #3b82f6;
+  --completed: #34d399;
+  --danger: #f87171;
+  --danger-hover: #ef4444;
+  --background: #111827;
+  --text: #f3f4f6;
+  --card: #1f2937;
+  --input-bg: #374151;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  background-color: var(--background);
+  color: var(--text);
+  transition: all 0.3s ease;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.container {
+  flex: 1;
+  overflow-y: auto;
+}
+
+.card {
+  background-color: var(--card);
+  transition: all 0.3s ease;
+}
+
+.input-field {
+  background-color: var(--input-bg);
+  transition: all 0.3s ease;
+}
+
+.task-item {
+  transition: all 0.3s ease;
+  animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.completed-task {
+  background-color: rgba(16, 185, 129, 0.1);
+}
+
+.dark-theme .completed-task {
+  background-color: rgba(52, 211, 153, 0.1);
+}
+
+.priority-high {
+  background-color: rgba(239, 68, 68, 0.1);
+  color: #ef4444;
+}
+
+.dark-theme .priority-high {
+  background-color: rgba(239, 68, 68, 0.2);
+  color: #f87171;
+}
+
+.priority-medium {
+  background-color: rgba(245, 158, 11, 0.1);
+  color: #f59e0b;
+}
+
+.dark-theme .priority-medium {
+  background-color: rgba(245, 158, 11, 0.2);
+  color: #fbbf24;
+}
+
+.priority-low {
+  background-color: rgba(16, 185, 129, 0.1);
+  color: #10b981;
+}
+
+.dark-theme .priority-low {
+  background-color: rgba(16, 185, 129, 0.2);
+  color: #34d399;
+}
+
+.add-btn {
+  background: linear-gradient(
+    135deg,
+    var(--primary),
+    var(--primary-hover)
+  );
+  transition: all 0.2s ease;
+}
+
+.add-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.clear-btn {
+  background: linear-gradient(135deg, var(--danger), var(--danger-hover));
+  transition: all 0.2s ease;
+}
+
+.clear-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.check-btn {
+  transition: all 0.2s ease;
+}
+
+.check-btn:hover {
+  transform: scale(1.1);
+}
+
+.action-btn {
+  transition: all 0.2s ease;
+}
+
+.action-btn:hover {
+  transform: scale(1.1);
+}
+
+.empty-state {
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 0.7;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.7;
+  }
+}
+
+/* Modal Styles */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+}
+
+.modal-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.modal-container {
+  background-color: var(--card);
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  width: 90%;
+  max-width: 400px;
+  padding: 0;
+  transform: translateY(-20px);
+  transition: all 0.3s ease;
+}
+
+.modal-overlay.active .modal-container {
+  transform: translateY(0);
+}
+
+.modal-header {
+  padding: 1.5rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+}
+
+.dark-theme .modal-header {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.modal-body {
+  padding: 1.5rem;
+}
+
+.modal-footer {
+  padding: 1rem 1.5rem;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+}
+
+.dark-theme .modal-footer {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.modal-title {
+  font-weight: 600;
+  font-size: 1.25rem;
+  margin-left: 12px;
+}
+
+.modal-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(239, 68, 68, 0.1);
+  color: #ef4444;
+}
+
+.dark-theme .modal-icon {
+  background-color: rgba(239, 68, 68, 0.2);
+  color: #f87171;
+}
+
+.modal-btn {
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.modal-btn-cancel {
+  background-color: #f3f4f6;
+  color: #4b5563;
+}
+
+.dark-theme .modal-btn-cancel {
+  background-color: #374151;
+  color: #d1d5db;
+}
+
+.modal-btn-cancel:hover {
+  background-color: #e5e7eb;
+}
+
+.dark-theme .modal-btn-cancel:hover {
+  background-color: #4b5563;
+}
+
+.modal-btn-confirm {
+  background-color: #ef4444;
+  color: white;
+}
+
+.modal-btn-confirm:hover {
+  background-color: #dc2626;
+}
+
+/* Edit mode styles */
+.edit-mode .view-buttons {
+  display: none;
+}
+
+.edit-mode .edit-buttons {
+  display: flex;
+}
+
+.edit-buttons {
+  display: none;
+  gap: 8px;
+}
+
+.save-btn {
+  background-color: var(--primary);
+  color: white;
+  padding: 6px 12px;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+}
+
+.save-btn:hover {
+  background-color: var(--primary-hover);
+}
+
+.cancel-btn {
+  background-color: #9ca3af;
+  color: white;
+  padding: 6px 12px;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+}
+
+.cancel-btn:hover {
+  background-color: #6b7280;
+}
+
+/* Theme transition */
+* {
+  transition: background-color 0.3s ease, color 0.3s ease,
+    border-color 0.3s ease;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+.dark-theme ::-webkit-scrollbar-track {
+  background: #374151;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #c5c5c5;
+  border-radius: 10px;
+}
+
+.dark-theme ::-webkit-scrollbar-thumb {
+  background: #6b7280;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
+}
+
+.dark-theme ::-webkit-scrollbar-thumb:hover {
+  background: #9ca3af;
+}
+.done {
+  background-color: #10b981;
+}
+.doneLi {
+  background-color: #34d39936 !important;
+}
